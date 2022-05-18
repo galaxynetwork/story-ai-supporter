@@ -1,9 +1,28 @@
-# story_ai_supporter
-Flask API server that helps you write a story using gpt-j, an AI model.
+<h3 align="center">
+    <p>Story AI Supporter using Hugging Face Transformer</p>
+</h3>
 
-ref: https://huggingface.co/blog/how-to-generate
+## Prototype
 
-https://github.com/kingoflolz/mesh-transformer-jax
+* 📝 AI model supports that you create stories and worldviews.
 
-https://github.com/marshmellow77/gptj-playground
+## References
 
+1. **https://huggingface.co/blog/how-to-generate**
+2. **https://github.com/kingoflolz/mesh-transformer-jax**
+3. **https://github.com/marshmellow77/gptj-playground**
+
+[paper](https://www.aclweb.org/anthology/2020.emnlp-demos.6/) you can cite for the 🤗 Transformers library:
+```bibtex
+@inproceedings{wolf-etal-2020-transformers,
+    title = "Transformers: State-of-the-Art Natural Language Processing",
+    author = "Thomas Wolf and Lysandre Debut and Victor Sanh and Julien Chaumond and Clement Delangue and Anthony Moi and Pierric Cistac and Tim Rault and Rémi Louf and Morgan Funtowicz and Joe Davison and Sam Shleifer and Patrick von Platen and Clara Ma and Yacine Jernite and Julien Plu and Canwen Xu and Teven Le Scao and Sylvain Gugger and Mariama Drame and Quentin Lhoest and Alexander M. Rush",
+    booktitle = "Proceedings of the 2020 Conference on Empirical Methods in Natural Language Processing: System Demonstrations",
+    month = oct,
+    year = "2020",
+    address = "Online",
+    publisher = "Association for Computational Linguistics",
+    url = "https://www.aclweb.org/anthology/2020.emnlp-demos.6",
+    pages = "38--45"
+}
+```

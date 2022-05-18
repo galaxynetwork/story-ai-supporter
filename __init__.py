@@ -9,6 +9,6 @@ def create_app():
 
     from . import main_server
     app.register_blueprint(main_server.bp)
-    app.config.from_envvar('APP_CONFIG_FILE')
+    # app.config.from_envvar('APP_CONFIG_FILE')
 
     return app
