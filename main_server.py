@@ -25,15 +25,10 @@ def text_generate():
     }
 
     if request.method == 'POST':
-        user_text = request.json['text']
-        max_lenth = len(user_text) + 100
-        tempr_param = float(request.json['datas']['randomness'])
-        top_k_param = int(request.json['datas']['fluency'])
-
         payload = {
-            'inputs': user_text,
+            'inputs': "",
             'parameters': {
-                'max_length': max_lenth,
+                'max_length': 100,
                 'do_sample': True,
                 'no_repeat_ngram_size': 2,
                 'temperature': 0.75,
@@ -43,6 +38,23 @@ def text_generate():
             }
         }
 
+        user_text = request.json['text']
+        if user_text == "":
+            response_body['status'] = 400
+            response_body['data'] = "Please enter text."
+
+            return jsonify(response_body), 400
+
+        tempr_param = float(request.json['datas']['randomness'])
+
+        if tempr_param < 0.01:
+            tempr_param = 0.01
+
+        top_k_param = int(request.json['datas']['fluency'])
+        if top_k_param < 1:
+            top_k_param = 1
+
+        payload['inputs'] = user_text
         payload['parameters']['temperature'] = tempr_param
         payload['parameters']['top_k'] = top_k_param
 
@@ -52,11 +64,10 @@ def text_generate():
                 ContentType='application/json',
                 Body=json.dumps(payload)
             )
-
             result = json.loads(response['Body'].read().decode())
 
             raw_text = result[0]['generated_text']
-            res_text = str(raw_text).replace("\n", " ").replace('"', "")
+            res_text = str(raw_text).replace(user_text, "").replace("\n", " ").replace('"', "")
 
             response_body['status'] = 200
             response_body['data'] = res_text

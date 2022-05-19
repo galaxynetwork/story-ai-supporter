@@ -1,6 +1,6 @@
-<h3 align="center">
+<h1 align="center">
     <p>Story AI Supporter using Hugging Face Transformer</p>
-</h3>
+</h1>
 
 ## Prototype
 
