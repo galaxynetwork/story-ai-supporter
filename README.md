@@ -5,6 +5,7 @@
 ## Prototype
 
 * 📝 AI model supports that you create stories and worldviews.
+* You can try this here : [GALAXY AI HELPER](https://ai.galaxychain.zone/)
 
 ## References
 
