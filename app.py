@@ -1,11 +1,27 @@
 from fastapi import FastAPI
-from pydantic import BaseModel
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi.encoders import jsonable_encoder
-
+from pydantic import BaseModel
 import boto3
 import json
 
 app = FastAPI()
+
+origins = [
+    "https://ai.galaxychain.zone",
+    "https://galaxychain.zone",
+    "http://localhost:3000",
+    "https://galaxychain.zone",
+    "https://ai-api.galaxychain.zone",
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # Amazon SageMaker Runtime Client
 session = boto3.Session()
@@ -31,7 +47,7 @@ async def server_status():
 
 
 @app.post('/gen-text')
-def text_generate(ai_params: DataIn):
+async def text_generate(ai_params: DataIn):
     response_body = {
         'status': 100,
         'data': ""
